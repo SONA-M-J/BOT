@@ -3,26 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dramabot 💬</title>
+  <title>MooDShift 💬</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1 class="title">Dramabot 💬</h1>
-    
-    <div class="chat-box">
+  <div class="app">
+    <!-- Sidebar for chat history -->
+    <div class="sidebar">
+      <h2>History</h2>
+      <ul id="historyList"></ul>
+    </div>
+
+    <!-- Main chat container --> 
+    <div class="container">
+      <h1 class="title">MooDShift 💬</h1>
+
       <div class="messages" id="messages"></div>
-      <input type="text" id="userInput" placeholder="Ask me anything..." />
-      <button onclick="handleQuestion()">Send</button>
-    </div>
 
-    <div id="progressBarContainer" class="hidden">
-      <div id="progressBar"></div>
-    </div>
+      <!-- Progress Bar and AI Thinking -->
+      <div id="progressBarContainer" class="hidden">
+        <div id="progressBar"></div>
+        <div id="aiThinking" class="hidden">
+          <p><strong>🤖 AI:</strong> <span id="typingDots">Thinking</span></p>
+        </div>
+      </div>
 
-    <button id="askAgainBtn" class="hidden" onclick="resetChat()">Ask Another Question 💬</button>
+      <!-- Input and Send -->
+      <div class="chat-box">
+        <input type="text" id="userInput" placeholder="Ask me anything..." />
+        <button id="sendBtn" onclick="handleQuestion()">Send</button>
+      </div>
+
+      <!-- Ask again button -->
+      <button id="askAgainBtn" class="hidden" onclick="resetChat()">wanna ask another question???</button>
+    </div>
   </div>
 
+  <!-- Fake Chat History Script -->
+  <script>
+    const fakeChats = [
+      "suggest me a useless thing to do now!!",
+      "suggest me some foodspot near me",
+      "Why is the sky blue?",
+      "Tell me a joke 😂",
+      "I'm bored... do something!",
+      "Is pineapple okay on pizza?",
+      "What’s your favorite movie?",
+      "How to become rich fast?",
+      "Do aliens exist?",
+      "Help me with math 😵"
+    ];
+
+    function populateFakeHistory() {
+      const historyList = document.getElementById("historyList");
+
+      fakeChats.forEach(text => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        li.classList.add("history-item"); // Optional: style it in CSS
+        historyList.appendChild(li);
+      });
+    }
+
+    window.onload = populateFakeHistory;
+  </script>
+
+  <!-- Your main logic -->
   <script src="script.js"></script>
 </body>
 </html>

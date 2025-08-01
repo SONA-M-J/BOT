@@ -1,68 +1,220 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #121212;
-  color: #fff;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+  background: #ffffff;
+  color: #0c0c0c;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: stretch;
 }
 
-.container {
-  text-align: center;
-  max-width: 500px;
-}
-
-.title {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #e65cfc;
-}
-
-.chat-box {
-  background: #1f1f1f;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #e65cfc;
-}
-
-input[type="text"] {
-  width: 70%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-button {
-  padding: 10px 15px;
-  margin-left: 10px;
-  background: #e65cfc;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-#progressBarContainer {
+.app {
+  display: flex;
   width: 100%;
-  background: #444;
-  border-radius: 5px;
-  margin-top: 20px;
-  height: 20px;
+  max-width: 1200px;
+  box-shadow: 0 0 15px rgba(247, 244, 244, 0.962);
+  background: white;
+  border-radius: 12px;
   overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #222;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.sidebar ul li:hover {
+  background: #b709b7;
+}
+
+/* Main Container */
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #312d2d;
+  position: relative;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #c60b8b;
+}
+
+/* Chat Messages */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.message {
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  max-width: 75%;
+}
+
+.user-message {
+  background-color: #c60b8b;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.ai-message {
+  background-color: #eeeeee;
+  color: #222;
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+/* Chat Input Box */
+.chat-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.chat-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #f1ecec;
+  font-size: 16px;
+}
+
+.chat-box button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #c60b8b;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.chat-box button:disabled {
+  background-color: #e190db;
+  cursor: not-allowed;
+}
+
+/* Progress Bar Container */
+#progressBarContainer {
+  height: 10px;
+  background: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 15px;
 }
 
 #progressBar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #ff6ec4, #7873f5);
-  transition: width 0.2s;
+  background-color: #c60b8b ;
+  transition: width 0.2s ease-in-out;
 }
 
+/* AI Thinking Animation */
+.typing-dots::after {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  animation: dots 1.2s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0% { content: ''; }
+  33% { content: '.'; }
+  66% { content: '..'; }
+  100% { content: '...'; }
+}
+
+
+/* Ask Again Button */
+#askAgainBtn {
+  margin-top: 20px;
+  padding: 10px 18px;
+  background-color: #c60b8b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+#askAgainBtn:hover {
+  background-color: #c60b8b;
+}
+
+
+/* Hidden Utility */
 .hidden {
   display: none;
 }
+
+.bot-message {
+  background-color: #eeeeee;
+  color: #222;
+  align-self: flex-start;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 10px;
+} 
+.typing-bubble {
+  background-color: #eeeeee;
+  color: #222;
+  padding: 10px 14px;
+  border-radius: 10px;
+  max-width: 75%;
+  align-self: flex-start;
+  margin-bottom: 10px;
+  font-style: italic;
+  animation: fadeIn 0.5s ease-in-out;
+}
+#progressBarContainer {
+  height: 14px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: radial-gradient(circle, #c60b8b 0%, #fba7f0 100%);
+  border-radius: 10px;
+  transition: width 0.2s ease-in-out;
+}
+
+
