@@ -44,7 +44,7 @@ Installation:
 bash
 Copy
 Edit
-git clone https://github.com/your-username/MooDShift.git
+git public site : https://sona-m-j.github.io/MooDShift/
 cd MooDShift
 Run:
 Simply open index.html in your browser.
